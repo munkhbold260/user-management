@@ -33,7 +33,8 @@ app.get("/pronames", (request, response) => {
   });
   response.send({ product: names });
 });
-
+////////////////
+//this is end point
 app.get("/users", (request, response) => {
   response.type = "application.json";
   response.send({ user: users });
@@ -53,7 +54,7 @@ app.get("/users", (request, response) => {
 
 app.post("/add-user", (req, res) => {
   const newUser = req.body;
-
+  // console.log("req.body", req.body);
   fs.readFile("dummy.json", (error, data) => {
     if (error) {
       console.log("Error in reading file");
@@ -67,6 +68,8 @@ app.post("/add-user", (req, res) => {
         } else {
           console.log("success");
           res.send("User added successfully");
+          console.log("145154", res.send);
+          // console.log("22323", data);
         }
       });
     }

@@ -1,23 +1,22 @@
 {
-  "products": [
-    { "name": "iphone", "price": 1234444 },
-    { "name": "iphone1", "price": 1235 },
-    { "name": "iphone2", "price": 1236 },
-    { "name": "wood", "price": 1111 },
-    { "name": "wood2", "price": 112 },
-    { "name": "wood3", "price": 1113 }
-  ],
-  "users": [
-    { "name": "boldoo", "age": 1234444 },
-    { "name": "boldoo", "age": 1234444 },
-    { "name": "boldoo", "age": 1234444 },
-    { "name": "boldoo", "age": 12 },
-    { "name": "boldoo", "age": 123 },
-    { "name": "boldoo", "age": 12 },
-    {},
-    {},
-    {},
-    { "username": "ssss" },
-    { "username": "ssss" }
-  ]
+    "products": [
+        {
+            "name": "iphone",
+            "price": 1234444
+        },
+        {
+            "name": "iphone1",
+            "price": 1235
+        },
+        {
+            "name": "iphone2",
+            "price": 1236
+        }
+    ],
+    "users": [
+        {
+            "name": "boldoo",
+            "age": 1234444
+        }
+    ]
 }

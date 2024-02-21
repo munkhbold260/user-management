@@ -1,25 +1,28 @@
-export default function Home() {
-  const BE_URL = "http://localhost:3001/add-user";
+export default function Home({ datas }) {
+  const be_url = "http://localhost:3001/add-user";
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = { username: e.target.username.value };
-    console.log("userName:", data);
+    const data = { name: e.target.username.value };
 
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    const fetched_data = await fetch(BE_URL, options);
+    console.log("data", data);
+    const fetched_data = await fetch(be_url, options);
     const fetched_json = await fetched_data.text();
-
-    console.log(fetched_data);
+    // console.log("123123", fetched_data);
+    // console.log(fetched_data);
+  }
+  async function handleDelete(b) {
+    const options = { method: "DELETE" };
   }
 
   return (
     <div className="flex flex-col gap-10 p-[100px]">
       <form className=" bg-red-50 flex gap-4 w-[600px]" onSubmit={handleSubmit}>
-        <label for="username">
+        <label for="name">
           Name:
           <input
             name="name"
@@ -38,30 +41,31 @@ export default function Home() {
       <div className=" bg-green-200 h-[400px] w-[600px] flex flex-col gap-5">
         end l fetch hiisnee haruulnadaa
         <div className="flex flex-col gap-5">
-          {/* {data.user.map((a) => {
+          {datas.user.map((a) => {
             return (
-              <div className="bg-orange-300">
-                <p>name:{a.name}</p>
-                <p>age:{a.age}</p>
+              <div className="bg-orange-100 flex gap-5">
+                <p className="bg-blue-200">name:{a.name}</p>
+                {/* <input className="bg-blue-200">delete</input> */}
+                <input className="bg-blue-200" value="delete" />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-// export async function getServerSideProps() {
-//   //////////
-//   const response = await fetch("http://localhost:3001/users");
-//   const data = await response.json();
-//   console.log("data: ", data);
+export async function getServerSideProps() {
+  //////////
+  const response = await fetch("http://localhost:3001/users");
+  const datas = await response.json();
+  console.log("data: ", datas);
 
-//   // ////////
+  // ////////
 
-//   // ///////
-//   return {
-//     props: { data },
-//   };
-// }
+  // ///////
+  return {
+    props: { datas },
+  };
+}
