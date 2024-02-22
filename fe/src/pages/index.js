@@ -23,6 +23,7 @@ export default function Home({ datas }) {
     b.preventDefault();
     console.log("working delete btn");
     const options = { method: "POST" };
+
     const fetched_data = await fetch(del_url, options);
   }
 
@@ -63,6 +64,7 @@ export default function Home({ datas }) {
                     className="bg-blue-200"
                     value="delete"
                     type="button"
+                    // name={newId}
                   />
                   <input
                     onClick={handleUpdate}

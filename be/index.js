@@ -78,7 +78,14 @@ app.post("/add-user", (req, res) => {
 
 app.post("/delete-user", (req, res) => {
   const delUser = req.body.newId;
-  console.log("s,dnksjbdfksbfksb");
+  console.log(req.body.newId);
+  const j = 0;
+  users.forEach((users) => {
+    j = j + 1;
+    if (users.newId === delUser) {
+      users.splice(j - 1, 1);
+    }
+  });
 });
 
 app.listen(3001, () => {
@@ -86,27 +93,27 @@ app.listen(3001, () => {
 });
 
 /////////////////////////////////////////////////////////////////////////
-let data = {
-  users: [
-    { name: "111", age: 12, id: 2 },
-    { name: "222" },
-    { name: "333" },
-    { name: "444" },
-  ],
-};
+// let data = {
+//   users: [
+//     { name: "111", age: 12, id: 2 },
+//     { name: "222" },
+//     { name: "333" },
+//     { name: "444" },
+//   ],
+// };
 
-const newUser = { name: "aa" };
-// data.users = [];
+// const newUser = { name: "aa" };
+// // data.users = [];
 
-function add() {
-  data.users.push(newUser);
-}
+// function add() {
+//   data.users.push(newUser);
+// }
 
-add();
+// add();
 
-function del() {
-  data.users.splice((id = 2));
-}
+// function del() {
+//   data.users.splice((id = 2));
+// }
 
-del();
-console.log(data);
+// del();
+// console.log(data);

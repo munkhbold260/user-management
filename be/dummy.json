@@ -1,0 +1,26 @@
+{
+    "products": [
+        {
+            "name": "iphone",
+            "price": 1234444
+        },
+        {
+            "name": "iphone1",
+            "price": 1235
+        },
+        {
+            "name": "iphone2",
+            "price": 1236
+        }
+    ],
+    "users": [
+        {
+            "name": "",
+            "id": "19Xix5T5R9EFpNLPsfjcz"
+        },
+        {
+            "name": "",
+            "id": "LNBpK-RE48kNU8JZFNFd6"
+        }
+    ]
+}
