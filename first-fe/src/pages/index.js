@@ -1,22 +1,34 @@
+import { nanoid } from "nanoid";
+
 export default function Home({ datas }) {
   const be_url = "http://localhost:3001/add-user";
+  const del_url = "http://localhost:3001/delete-user";
   async function handleSubmit(e) {
     e.preventDefault();
-    const data = { name: e.target.username.value };
+    const newId = nanoid();
+    const data = { name: e.target.username.value, id: newId };
 
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    console.log("data", data);
+    // console.log("data", data);
     const fetched_data = await fetch(be_url, options);
-    const fetched_json = await fetched_data.text();
+    // const fetched_json = await fetched_data.text();
     // console.log("123123", fetched_data);
     // console.log(fetched_data);
   }
   async function handleDelete(b) {
-    const options = { method: "DELETE" };
+    b.preventDefault();
+    console.log("working delete btn");
+    const options = { method: "POST" };
+    const fetched_data = await fetch(del_url, options);
+  }
+
+  async function handleUpdate(c) {
+    c.preventDefault();
+    console.log("working edit button");
   }
 
   return (
@@ -31,7 +43,6 @@ export default function Home({ datas }) {
             type="text"
           />
         </label>
-
         <input
           type="submit"
           value="submit"
@@ -44,9 +55,22 @@ export default function Home({ datas }) {
           {datas.user.map((a) => {
             return (
               <div className="bg-orange-100 flex gap-5">
-                <p className="bg-blue-200">name:{a.name}</p>
+                <p className="bg-blue-200">name: {a.name}</p>
                 {/* <input className="bg-blue-200">delete</input> */}
-                <input className="bg-blue-200" value="delete" />
+                <form className="flex gap-5">
+                  <input
+                    onClick={handleDelete}
+                    className="bg-blue-200"
+                    value="delete"
+                    type="button"
+                  />
+                  <input
+                    onClick={handleUpdate}
+                    className="bg-blue-200"
+                    value="edit"
+                    type="submit"
+                  />
+                </form>
               </div>
             );
           })}
@@ -60,7 +84,7 @@ export async function getServerSideProps() {
   //////////
   const response = await fetch("http://localhost:3001/users");
   const datas = await response.json();
-  console.log("data: ", datas);
+  // console.log("data: ", datas);
 
   // ////////
 

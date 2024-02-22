@@ -1,13 +1,13 @@
-// module bichiglel
+//          module bichiglel
 // import bla from "bla bla";
 // import data from "./data";
 
-//commonJs bichiglel
+//          commonJs bichiglel
 const express = require("express");
 const app = express();
 const cors = require("cors");
-
 const fs = require("fs");
+// const nanoid = require("nanoid");
 
 const bodyparser = require("body-parser");
 app.use(bodyparser.json());
@@ -76,6 +76,37 @@ app.post("/add-user", (req, res) => {
   });
 });
 
+app.post("/delete-user", (req, res) => {
+  const delUser = req.body.newId;
+  console.log("s,dnksjbdfksbfksb");
+});
+
 app.listen(3001, () => {
   console.log("Server is listening");
 });
+
+/////////////////////////////////////////////////////////////////////////
+let data = {
+  users: [
+    { name: "111", age: 12, id: 2 },
+    { name: "222" },
+    { name: "333" },
+    { name: "444" },
+  ],
+};
+
+const newUser = { name: "aa" };
+// data.users = [];
+
+function add() {
+  data.users.push(newUser);
+}
+
+add();
+
+function del() {
+  data.users.splice((id = 2));
+}
+
+del();
+console.log(data);

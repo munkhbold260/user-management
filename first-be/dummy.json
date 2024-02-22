@@ -1,22 +1,16 @@
 {
-    "products": [
-        {
-            "name": "iphone",
-            "price": 1234444
-        },
-        {
-            "name": "iphone1",
-            "price": 1235
-        },
-        {
-            "name": "iphone2",
-            "price": 1236
-        }
-    ],
-    "users": [
-        {
-            "name": "boldoo",
-            "age": 1234444
-        }
-    ]
+  "products": [
+    { "name": "iphone", "price": 1234444 },
+    { "name": "iphone1", "price": 1235 },
+    { "name": "iphone2", "price": 1236 }
+  ],
+  "users": [
+    { "name": "", "id": "19Xix5T5R9EFpNLPsfjcz" },
+    { "name": "", "id": "ElPSUZ4xCMCDp0mbl0szO" },
+    { "name": "kmk", "id": "qImpilZg99KwJBMAl0pvK" },
+    { "name": "kmk", "id": "Mznn9b3mVkbAgcCx3E9SK" },
+    { "name": "", "id": "QHEppomyAtZNNKbMIABt7" },
+    { "name": "", "id": "NVHjLZOWqMmTYTucIE9n3" },
+    { "name": "munkhbold", "id": "Rw_LN-ucQrHHqiYNndxmB" }
+  ]
 }
