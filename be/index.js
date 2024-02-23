@@ -40,16 +40,6 @@ app.get("/users", (request, response) => {
   response.send({ user: users });
 });
 
-// app.post("/add-user", (req, res) => {
-//   const newUser = req.body;
-//   res.send("huselt irseen");
-//   console.log(newUser);
-
-//   fs.writeFile("test.json", JSON.stringify(newUser), function (err) {
-//     if (err) throw err;
-//     console.log("Updated!");
-//   });
-// });
 ////////////////////////////////////////////////////////////////////////////////////
 
 app.post("/add-user", (req, res) => {
@@ -89,7 +79,7 @@ app.post("/delete-user", (req, res) => {
 });
 
 app.listen(3001, () => {
-  console.log("Server is listening");
+  console.log("Server is listening for localhost:3001");
 });
 
 /////////////////////////////////////////////////////////////////////////

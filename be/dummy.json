@@ -1,26 +1,12 @@
 {
-    "products": [
-        {
-            "name": "iphone",
-            "price": 1234444
-        },
-        {
-            "name": "iphone1",
-            "price": 1235
-        },
-        {
-            "name": "iphone2",
-            "price": 1236
-        }
-    ],
-    "users": [
-        {
-            "name": "",
-            "id": "19Xix5T5R9EFpNLPsfjcz"
-        },
-        {
-            "name": "",
-            "id": "LNBpK-RE48kNU8JZFNFd6"
-        }
-    ]
+  "products": [
+    { "name": "iphone", "price": 1234444 },
+    { "name": "iphone1", "price": 1235 },
+    { "name": "iphone2", "price": 1236 }
+  ],
+  "users": [
+    { "name": "munkhbold", "id": "pKzq-UXQ7TW4SRVv0dNgU" },
+    { "name": "munkhbold", "id": "eAhzlaNHO5JzLELzREUsN" },
+    { "name": "munkhbold", "id": "FzOn6ETq3drRj5I9fAJUu" }
+  ]
 }

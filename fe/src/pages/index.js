@@ -1,6 +1,11 @@
 import { nanoid } from "nanoid";
+import { useState, useEffect } from "react";
 
 export default function Home({ datas }) {
+  const [list, setList] = useState({ datas });
+
+  console.log("bdfjsdhbfkjhsdfkjgs", datas);
+  console.log("liiiist", list);
   const be_url = "http://localhost:3001/add-user";
   const del_url = "http://localhost:3001/delete-user";
   async function handleSubmit(e) {
@@ -35,7 +40,7 @@ export default function Home({ datas }) {
   return (
     <div className="flex flex-col gap-10 p-[100px]">
       <form className=" bg-red-50 flex gap-4 w-[600px]" onSubmit={handleSubmit}>
-        <label for="name">
+        <label>
           Name:
           <input
             name="name"
@@ -45,6 +50,7 @@ export default function Home({ datas }) {
           />
         </label>
         <input
+          // onClick={setList(list)}
           type="submit"
           value="submit"
           className="bg-blue-300 w-1/3 h-10"
@@ -53,9 +59,9 @@ export default function Home({ datas }) {
       <div className=" bg-green-200 h-[400px] w-[600px] flex flex-col gap-5">
         end l fetch hiisnee haruulnadaa
         <div className="flex flex-col gap-5">
-          {datas.user.map((a) => {
+          {list.datas.user.map((a, id) => {
             return (
-              <div className="bg-orange-100 flex gap-5">
+              <div key={id} className="bg-orange-100 flex gap-5">
                 <p className="bg-blue-200">name: {a.name}</p>
                 {/* <input className="bg-blue-200">delete</input> */}
                 <form className="flex gap-5">
