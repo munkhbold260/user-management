@@ -1,12 +1,1 @@
-{
-  "products": [
-    { "name": "iphone", "price": 1234444 },
-    { "name": "iphone1", "price": 1235 },
-    { "name": "iphone2", "price": 1236 }
-  ],
-  "users": [
-    { "name": "munkhbold", "id": "pKzq-UXQ7TW4SRVv0dNgU" },
-    { "name": "munkhbold", "id": "eAhzlaNHO5JzLELzREUsN" },
-    { "name": "munkhbold", "id": "FzOn6ETq3drRj5I9fAJUu" }
-  ]
-}
+{"products":[{"name":"iphone","price":1234444}],"users":[{"name":"1","id":"7-np9IqeZ9lh0zj4mOhK2"},{"name":"2","id":"AtOW9BsRgAP1HJtwDwIle"},{"name":"3","id":"4vphoOxVzMvWlITlHPs44"},{"name":"","id":"-tLpM5yFFghp0ilceR02B"},{"name":"","id":"DK0l_dKF5pQEEEwAXmQVy"},{"name":"","id":"02IL3-1MXgfsbT3c84b9I"},{"name":"dfgdfg","id":"Qt9PUfw0bluVOkrVty8Kn"},{"name":"dfgdfgbkgjg","id":"Pu9pEnrRMDtyX9xb9RWDh"},{"name":"dfgdfgcjhbdvhjdbkbkgjg","id":"sC3VZXTiTVRbLwRQkGXvy"},{"name":"dfgdfnbcjgdgcjhbdvhjdbkbkgjg","id":"HnEGM2XhnfdHr-hdnyRoZ"},{"name":"dfgdfnbcjgdgcjhbdvhjdbkbkgjg","id":"MwgLRo9HU-01XXTMYLoTA"}]}

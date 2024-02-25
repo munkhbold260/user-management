@@ -57,8 +57,9 @@ app.post("/add-user", (req, res) => {
           res.send("error happened");
         } else {
           console.log("success");
-          res.send("User added successfully");
-          console.log("145154", res.send);
+          // res.send("User added successfully");
+          res.send(JSON.stringify(jsonFile));
+          console.log("jsonFile sending", JSON.stringify(jsonFile));
           // console.log("22323", data);
         }
       });
@@ -68,7 +69,7 @@ app.post("/add-user", (req, res) => {
 
 app.post("/delete-user", (req, res) => {
   const delUser = req.body.newId;
-  console.log(req.body.newId);
+  // console.log(req.body.newId);
   const j = 0;
   users.forEach((users) => {
     j = j + 1;
