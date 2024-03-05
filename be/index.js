@@ -1,110 +1,62 @@
-//          module bichiglel
-// import bla from "bla bla";
-// import data from "./data";
-
-//          commonJs bichiglel
+const { Pool } = require("pg");
 const express = require("express");
-const app = express();
+const bodyParser = require("body-parser");
 const cors = require("cors");
-const fs = require("fs");
-// const nanoid = require("nanoid");
+const dotenv = require("dotenv");
+// require("dotenv").config();
 
-const bodyparser = require("body-parser");
-app.use(bodyparser.json());
+dotenv.config();
+const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 
-const { products, users } = require("./dummy.json");
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
-app.get("/abc", (request, response) => {
-  response.type = "application.json";
-  response.send({ message: "hello back-end" });
-});
+const pgConfig = {
+  host: PGHOST,
+  database: PGDATABASE,
+  username: PGUSER,
+  password: PGPASSWORD,
+  port: 5432,
+  ssl: {
+    require: true,
+  },
+};
 
-app.get("/products", (request, response) => {
-  response.type = "application.json";
-  response.send({ products: products });
-});
-// console.log(products);
+const pool = new Pool(pgConfig);
 
-app.get("/pronames", (request, response) => {
-  response.type = "application.json";
-  const names = products.map((a) => {
-    return a.name;
-  });
-  response.send({ product: names });
-});
-////////////////
-//this is end point
-app.get("/users", (request, response) => {
-  response.type = "application.json";
-  response.send({ user: users });
-});
+// async function getPgVersion() {
+//   const client = await pool.connect();
 
-////////////////////////////////////////////////////////////////////////////////////
+//   try {
+//     const result = await client.query(
+//       "CREATE TABLE users (name VARCHAR(255), age INT, phone VARCHAR(255), email VARCHAR(255))"
+//     );
 
-app.post("/add-user", (req, res) => {
+//     // console.log(result.rows[0]);
+//   } finally {
+//     client.release();
+//   }
+// }
+
+// getPgVersion();
+
+app.post("/add-user", async (req, res) => {
   const newUser = req.body;
-  // console.log("req.body", req.body);
-  fs.readFile("dummy.json", (error, data) => {
-    if (error) {
-      console.log("Error in reading file");
-    } else {
-      const jsonFile = JSON.parse(data.toString());
-      jsonFile.users.push(newUser);
-      fs.writeFile("dummy.json", JSON.stringify(jsonFile), (err) => {
-        if (err) {
-          console.log(err);
-          res.send("error happened");
-        } else {
-          console.log("success");
-          // res.send("User added successfully");
-          res.send(JSON.stringify(jsonFile));
-          console.log("jsonFile sending", JSON.stringify(jsonFile));
-          // console.log("22323", data);
-        }
-      });
-    }
-  });
+  console.log(newUser);
+  const client = await pool.connect();
+  const Query = `INSERT INTO users (name, age, email) VALUES ('${newUser.name}','${newUser.age}','${newUser.email}');`;
+  try {
+    client.query(Query);
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.release();
+  }
+
+  res.status(200).send({ message: "User Added successfully" });
 });
 
-app.post("/delete-user", (req, res) => {
-  const delUser = req.body.newId;
-  // console.log(req.body.newId);
-  const j = 0;
-  users.forEach((users) => {
-    j = j + 1;
-    if (users.newId === delUser) {
-      users.splice(j - 1, 1);
-    }
-  });
+app.listen(4000, () => {
+  console.log("Server is running on port 3000");
 });
-
-app.listen(3001, () => {
-  console.log("Server is listening for localhost:3001");
-});
-
-/////////////////////////////////////////////////////////////////////////
-// let data = {
-//   users: [
-//     { name: "111", age: 12, id: 2 },
-//     { name: "222" },
-//     { name: "333" },
-//     { name: "444" },
-//   ],
-// };
-
-// const newUser = { name: "aa" };
-// // data.users = [];
-
-// function add() {
-//   data.users.push(newUser);
-// }
-
-// add();
-
-// function del() {
-//   data.users.splice((id = 2));
-// }
-
-// del();
-// console.log(data);
