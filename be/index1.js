@@ -67,26 +67,26 @@ app.post("/add-user", (req, res) => {
   });
 });
 
-app.post("/delete-user", (req, res) => {
-  fs.readFile("dummy.json", (error, data) => {
-    if (error) {
-      console.log("Error in delete->read file");
-    } else {
-      const jsonFile = JSON.parse(data.toString());
-      const deletedjson = jsonFile.users.filter((user) => {
-        return user.id != req.body.id;
-      });
-      fs.write("dummy.json", JSON.stringify(deletedjson), (err) => {
-        if (err) {
-          res.send("Error happened in delete->write file");
-        } else {
-          res.send(JSON.stringify(deletedjson));
-        }
-      });
-    }
-  });
-});
+// app.post("/delete-user", (req, res) => {
+//   fs.readFile("dummy.json", (error, data) => {
+//     if (error) {
+//       console.log("Error in delete->read file");
+//     } else {
+//       const jsonFile = JSON.parse(data.toString());
+//       const deletedjson = jsonFile.users.filter((user) => {
+//         return user.id != req.body.id;
+//       });
+//       fs.write("dummy.json", JSON.stringify(deletedjson), (err) => {
+//         if (err) {
+//           res.send("Error happened in delete->write file");
+//         } else {
+//           res.send(JSON.stringify(deletedjson));
+//         }
+//       });
+//     }
+//   });
+// });
 
-app.listen(3001, () => {
-  console.log("Server is listening for localhost:3001");
+app.listen(4000, () => {
+  console.log("Server is listening for localhost:4000");
 });

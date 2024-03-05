@@ -52,11 +52,37 @@ app.post("/add-user", async (req, res) => {
     console.log(e);
   } finally {
     client.release();
+    console.log("user add successfully");
   }
 
   res.status(200).send({ message: "User Added successfully" });
 });
 
+app.delete("/delete-user", async (req, res) => {
+  const deleteUser = req.body;
+  console.log("requ", deleteUser.name);
+  const client = await pool.connect();
+  const Query = `DELETE FROM users WHERE name='${deleteUser.name}' age=${deleteUser.age}`;
+  // const Query = "DELETE FROM users WHERE name='bold'";
+
+  try {
+    client.query(Query);
+  } catch (e) {
+    console.log(e);
+  } finally {
+    client.release();
+    console.log("user deleted");
+  }
+  res.status(200).send({ message: "User Delete is successfully" });
+});
+// DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+// app.get("/users", (request, response) => {
+//   response.type = "application.json";
+//   response.send({ user: users });
+//   console.log("get is working");
+// });
+
 app.listen(4000, () => {
-  console.log("Server is running on port 3000");
+  console.log("Server is running on port 4000");
 });

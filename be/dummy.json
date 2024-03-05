@@ -1,1 +1,26 @@
-{"products":[{"name":"iphone","price":1234444}],"users":[{"name":"1","id":"_TBYrp2nFZs_Ox43YOSWT"},{"name":"2","id":"LyXWjRK0Z81zmRlTVkhDs"},{"name":"3","id":"V9G9b5xZg9iUlRh326yoS"},{"name":"bi","id":"OzeuvSnalaMGcTcr-taaX"}]}
+{
+    "products": [
+        {
+            "name": "iphone",
+            "price": 1234444
+        }
+    ],
+    "users": [
+        {
+            "name": "1"
+        },
+        {
+            "name": "2"
+        },
+        {
+            "name": "3"
+        },
+        {
+            "name": "4"
+        },
+        {
+            "name": "light_star",
+            "age": 2
+        }
+    ]
+}
