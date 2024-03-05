@@ -1,3 +1,6 @@
+// import Layout from "../components/layout";
+// import NestedLayout from "../components/nested-layout";
+
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
 import React from "react";
@@ -29,13 +32,21 @@ export default function Home() {
     console.log("feeeetched json", fetched_json.users);
     console.log("liiiiiiiiiist", list);
   }
-  // async function handleDelete(b) {
-  //   b.preventDefault();
-  //   console.log("working delete btn");
-  //   const options = { method: "POST" };
-
-  //   const fetched_data = await fetch(del_url, options);
-  // }
+  async function handleDelete(event) {
+    // b.preventDefault();
+    const data = { id: event.target.id };
+    // console.log(event.target.id);
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
+    // // console.log("data", data);
+    const fetched_data = await fetch(del_url, options);
+    const fetched_json = await fetched_data.json();
+    console.log("fetched_data: ", fetched_data);
+    setList(fetched_json.users);
+  }
 
   // async function handleUpdate(c) {
   //   c.preventDefault();
@@ -68,8 +79,21 @@ export default function Home() {
               <div key={id} className="bg-orange-100 flex gap-5">
                 <p className="bg-blue-200">name: {a.name}</p>
                 <form className="flex gap-5">
-                  <input className="bg-blue-200" value="delete" type="button" />
-                  <input className="bg-blue-200" value="edit" type="submit" />
+                  <input
+                    className="bg-blue-200"
+                    id={a.id}
+                    value="delete"
+                    type="button"
+                    onClick={() => {
+                      handleDelete(event);
+                    }}
+                  />
+                  <input
+                    className="bg-blue-200"
+                    id={a.id}
+                    value="edit"
+                    type="submit"
+                  />
                 </form>
               </div>
             );
