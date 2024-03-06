@@ -1,4 +1,4 @@
-// import { nanoid } from "nanoid";
+import { nanoid } from "nanoid";
 // import { useState, useEffect } from "react";
 import React from "react";
 
@@ -12,9 +12,13 @@ export default function Home() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // const newId = nanoid();
-    const data = { name: e.target.username.value };
-    // , id: newId
+    const newId = nanoid();
+    const data = {
+      name: e.target.username.value,
+      id: newId,
+      age: e.target.age.value,
+    };
+
     const options = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -22,20 +26,27 @@ export default function Home() {
     };
     console.log("data", data);
     const fetched_data = await fetch(be_url, options);
-    // const fetched_json = await fetched_data.json();
+    const fetched_json = await fetched_data.json();
 
     // setList(fetched_json.users);
 
     // console.log("feeeetched json", fetched_json.users);
     // console.log("liiiiiiiiiist", list);
   }
-  // async function handleDelete(b) {
-  //   b.preventDefault();
-  //   console.log("working delete btn");
-  //   const options = { method: "POST" };
+  async function handleDelete(e) {
+    e.preventDefault();
+    console.log("working delete btn");
+    const data = { name: e.target.username.value };
+    console.log(data);
+    const options = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    };
 
-  //   const fetched_data = await fetch(del_url, options);
-  // }
+    const fetched_data = await fetch(del_url, options);
+    const fetched_json = await fetched_data.json();
+  }
 
   // async function handleUpdate(c) {
   //   c.preventDefault();
@@ -54,11 +65,60 @@ export default function Home() {
             type="text"
           />
         </label>
+        <label>
+          Age:
+          <input
+            name="name"
+            id="age"
+            className="bg-red-300 rounded-[5px] w-1/3 h-10"
+            type="text"
+          />
+        </label>
         <input
           type="submit"
           value="submit"
           className="bg-blue-300 w-1/3 h-10"
+        />{" "}
+      </form>
+      <form onSubmit={handleDelete}>
+        <label>
+          Name:
+          <input
+            name="name"
+            id="username"
+            className="bg-red-300 rounded-[5px] w-1/3 h-10"
+            type="text"
+          />
+        </label>
+
+        <input
+          type="submit"
+          value="delete"
+          className="bg-blue-300 w-[100px] h-10"
         />
+      </form>
+      <form onSubmit={handleDelete}>
+        <label>
+          Name:
+          <input
+            name="name"
+            id="username"
+            className="bg-red-300 rounded-[5px] w-1/3 h-10"
+            type="text"
+          />
+        </label>
+      </form>{" "}
+      <form onSubmit={handleGet}>
+        <label>
+          Name:
+          <input
+            value="get"
+            name="name"
+            id="username"
+            className="bg-red-300 rounded-[5px] w-1/3 h-10"
+            type="text"
+          />
+        </label>
       </form>
       {/* <div className=" bg-green-200 h-[400px] w-[600px] flex flex-col gap-5">
         end l fetch hiisnee haruulnadaa
