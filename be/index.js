@@ -25,21 +25,21 @@ const pgConfig = {
 
 const pool = new Pool(pgConfig);
 
-async function getPgVersion() {
-  const client = await pool.connect();
+// async function getPgVersion() {
+//   const client = await pool.connect();
 
-  try {
-    const result = await client.query(
-      "CREATE TABLE users (name VARCHAR(255), age INT, phone VARCHAR(255), email VARCHAR(255), id VARCHAR(255))"
-    );
+//   try {
+//     const result = await client.query(
+//       "CREATE TABLE users (name VARCHAR(255), age INT, phone VARCHAR(255), email VARCHAR(255), id VARCHAR(255))"
+//     );
 
-    // console.log(result.rows[0]);
-  } finally {
-    client.release();
-  }
-}
+//     // console.log(result.rows[0]);
+//   } finally {
+//     client.release();
+//   }
+// }
 
-getPgVersion();
+// getPgVersion();
 
 // async function getPgVersion() {
 //   const client = await pool.connect();
@@ -93,20 +93,20 @@ app.delete("/delete-user", async (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get("/get-user", async (req, res) => {
   const allUser = req.body;
-  console.log("requ", allUser.name);
+  console.log("getting alluser", allUser);
   const client = await pool.connect();
   const Query = "SELECT * FROM users;";
-  // const Query = "DELETE FROM users WHERE name='bold'";
 
   try {
-    client.query(Query);
+    const result = await client.query(Query);
+    res.status(200).send({ message: result.rows });
+    console.log("result", result);
   } catch (e) {
     console.log(e);
   } finally {
     client.release();
-    console.log("user deleted");
+    console.log("user get");
   }
-  res.status(200).send({ message: "User Delete is successfully" });
 });
 
 app.listen(4000, () => {

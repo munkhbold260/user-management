@@ -9,6 +9,7 @@ export default function Home() {
   // console.log("liiiist", list);
   const be_url = "http://localhost:4000/add-user";
   const del_url = "http://localhost:4000/delete-user";
+  const get_url = "http://localhost:4000/user-get";
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -48,10 +49,20 @@ export default function Home() {
     const fetched_json = await fetched_data.json();
   }
 
-  // async function handleUpdate(c) {
-  //   c.preventDefault();
-  //   console.log("working edit button");
-  // }
+  async function handleGet(e) {
+    e.preventDefault();
+    console.log("working get btn");
+    // const data = { name: e.target.username.value };
+    // console.log(data);
+    // const options = {
+    //   method: "GET",
+    //   // headers: { "Content-Type": "application/json" },
+    //   // body: JSON.stringify(data),
+    // };
+
+    await fetch(get_url);
+    // const fetched_json = await fetched_data.json();
+  }
 
   return (
     <div className="flex flex-col gap-10 p-[100px]">
@@ -97,29 +108,24 @@ export default function Home() {
           className="bg-blue-300 w-[100px] h-10"
         />
       </form>
-      <form onSubmit={handleDelete}>
-        <label>
-          Name:
-          <input
-            name="name"
-            id="username"
-            className="bg-red-300 rounded-[5px] w-1/3 h-10"
-            type="text"
-          />
-        </label>
-      </form>{" "}
       <form onSubmit={handleGet}>
         <label>
           Name:
           <input
-            value="get"
             name="name"
             id="username"
             className="bg-red-300 rounded-[5px] w-1/3 h-10"
             type="text"
           />
         </label>
+
+        <input
+          type="submit"
+          value="get"
+          className="bg-blue-300 w-[100px] h-10"
+        />
       </form>
+
       {/* <div className=" bg-green-200 h-[400px] w-[600px] flex flex-col gap-5">
         end l fetch hiisnee haruulnadaa
         <div className="flex flex-col gap-5">
